@@ -131,7 +131,7 @@
                                                         </div>
                                                     </nav>
 
-                                                    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                                                    <main class="col-md-10 ms-sm-auto col-lg-10 px-md-5">
                                                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                                             <h1 class="h2">Dashboard</h1>
                                                             <div class="btn-toolbar mb-2 mb-md-0">
@@ -150,37 +150,37 @@
 
                                                         <h2 th:text="${Create}">Section title</h2>
 
-                                                        <form>
+                                                        <form class="form-control col-md-3"> 
 
 
                                                             <div class="form-floating">
-                                                                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                                <input type="text" class="form-control form-control-sm col-md-3" id="floatingInput" placeholder="name@example.com">
                                                                     <label for="titulo">Titulo</label>
                                                             </div>
                                                             <div class="form-floating">
-                                                                <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
+                                                                <input type="text" class="form-control " id="floatingPassword" placeholder="Password">
                                                                     <label for="descripcion">Descripcion</label>
                                                             </div>
                                                             <div class="form-floating">
-                                                                <input type="date" class="form-control" id="floatingPassword" placeholder="Password">
+                                                                <input type="date" class="form-control w-auto" id="floatingPassword" placeholder="Password">
                                                                     <label for="fechainicio">Fecha Inicio</label>
                                                             </div>
                                                             <div class="form-floating">
-                                                                <input type="date" class="form-control" id="floatingPassword" placeholder="Password">
+                                                                <input type="date" class="w-auto form-control" id="floatingPassword" placeholder="Password">
                                                                     <label for="fechafin">Fecha FIn</label>
                                                             </div>
 
                                                             <div class="form-floating">
                                                                 <label for="cars">Choose a car:</label>
 
-                                                                <select name="cars" id="cars" class="form-control">
+                                                                <select name="cars" id="cars" class="form-control w-auto">
                                                                     <option value="volvo">Volvo</option>
                                                                     <option value="saab">Saab</option>
                                                                     <option value="mercedes">Mercedes</option>
                                                                     <option value="audi">Audi</option>
                                                                 </select>
                                                             </div>
-                                                            <a th:href="@{/Admin/home}" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</a>
+                                                            <a th:href="@{/Admin/home}" class="w-auto btn btn-lg btn-primary" type="submit">Add Activity</a>
                                                             <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
                                                         </form>
 
