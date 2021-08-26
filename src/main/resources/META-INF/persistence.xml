@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="uteq.sga_ScchoolarSystem_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>uteq.sga.ScchoolarSystem.Entity.Persona</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Materiacurso</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Matricula</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Chat</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Materia</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Representante</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Titulos</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Tareas</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Estudiante</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Pago</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Tipousuario</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Asistenciaestudiante</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Chatrepresentante</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Usuario</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Quimestre</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Curso</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Nivel</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Horasclase</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Foroprofesor</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Foro</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Calificacion</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Periodo</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Actividad</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Parcial</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Sysdiagrams</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Tiporecurso</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Recursos</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Periodomatriculacurso</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Profesor</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Tiponotas</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Administrador</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Chatprofesor</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Asistencia</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Foroestudiante</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/GA"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="123456"/>
+    </properties>
+  </persistence-unit>
+</persistence>
