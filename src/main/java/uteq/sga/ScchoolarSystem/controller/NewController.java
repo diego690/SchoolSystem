@@ -23,7 +23,7 @@ public class NewController {
         return "index1";
     }
     
-    @GetMapping("/Admin/home")
+    @GetMapping("/home")
     public String home(){
         return "home";
     }
