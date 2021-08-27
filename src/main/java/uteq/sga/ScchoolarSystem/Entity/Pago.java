@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,13 +18,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "pago", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pago.findAll", query = "SELECT p FROM Pago p"),
     @NamedQuery(name = "Pago.findByIdpago", query = "SELECT p FROM Pago p WHERE p.idpago = :idpago"),
@@ -38,21 +39,16 @@ public class Pago implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "idpago")
     private Integer idpago;
     @Basic(optional = false)
-    @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
-    @Column(name = "valor")
     private BigDecimal valor;
     @Basic(optional = false)
-    @Column(name = "tipo")
     private String tipo;
     @Basic(optional = false)
-    @Column(name = "evidencia")
     private String evidencia;
     @JoinColumn(name = "idperiodomatriculacurso", referencedColumnName = "idperiodomatricula")
     @ManyToOne(optional = false)

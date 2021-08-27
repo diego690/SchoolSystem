@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,13 +19,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "representante", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Representante.findAll", query = "SELECT r FROM Representante r"),
     @NamedQuery(name = "Representante.findByIdrepresentante", query = "SELECT r FROM Representante r WHERE r.idrepresentante = :idrepresentante")})
@@ -36,7 +38,6 @@ public class Representante implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idrepresentante")
     private Integer idrepresentante;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idrepresentante")
     private Collection<Estudiante> estudianteCollection;
@@ -64,6 +65,7 @@ public class Representante implements Serializable {
         this.idrepresentante = idrepresentante;
     }
 
+    @XmlTransient
     public Collection<Estudiante> getEstudianteCollection() {
         return estudianteCollection;
     }
@@ -72,6 +74,7 @@ public class Representante implements Serializable {
         this.estudianteCollection = estudianteCollection;
     }
 
+    @XmlTransient
     public Collection<Chatrepresentante> getChatrepresentanteCollection() {
         return chatrepresentanteCollection;
     }

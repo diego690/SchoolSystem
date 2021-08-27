@@ -9,7 +9,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uteq.sga.ScchoolarSystem.Entity.Tipousuario;
-import uteq.sga.ScchoolarSystem.Entity.Tipousuario_;
 import uteq.sga.ScchoolarSystem.Repositorys.ITipoUsuarioRepository;
 import uteq.sga.ScchoolarSystem.Services.ITipoUsuarioService;
 
@@ -30,17 +29,17 @@ public class TipoUsuarioService implements ITipoUsuarioService{
 
     @Override
     public void guardar(Tipousuario user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tipouserepo.save(user);
     }
 
     @Override
-    public Tipousuario buscaById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Tipousuario buscaById(Short id) {
+        return tipouserepo.findById(id).orElse(null);
     }
 
     @Override
-    public void eliminar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void eliminar(Short id) {
+        tipouserepo.deleteById(id);
     }
 
    

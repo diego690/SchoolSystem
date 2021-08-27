@@ -16,13 +16,15 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "sysdiagrams", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Sysdiagrams.findAll", query = "SELECT s FROM Sysdiagrams s"),
     @NamedQuery(name = "Sysdiagrams.findByName", query = "SELECT s FROM Sysdiagrams s WHERE s.name = :name"),
@@ -33,7 +35,6 @@ public class Sysdiagrams implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @Column(name = "principal_id")
@@ -43,10 +44,8 @@ public class Sysdiagrams implements Serializable {
     @Basic(optional = false)
     @Column(name = "diagram_id")
     private Integer diagramId;
-    @Column(name = "version")
     private Integer version;
     @Lob
-    @Column(name = "definition")
     private byte[] definition;
 
     public Sysdiagrams() {

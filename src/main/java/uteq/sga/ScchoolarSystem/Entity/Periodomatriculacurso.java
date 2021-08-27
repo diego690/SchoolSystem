@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,13 +19,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "periodomatriculacurso", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Periodomatriculacurso.findAll", query = "SELECT p FROM Periodomatriculacurso p"),
     @NamedQuery(name = "Periodomatriculacurso.findByIdperiodomatricula", query = "SELECT p FROM Periodomatriculacurso p WHERE p.idperiodomatricula = :idperiodomatricula")})
@@ -36,7 +38,6 @@ public class Periodomatriculacurso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idperiodomatricula")
     private Integer idperiodomatricula;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idperiodomatricula")
     private Collection<Calificacion> calificacionCollection;
@@ -67,6 +68,7 @@ public class Periodomatriculacurso implements Serializable {
         this.idperiodomatricula = idperiodomatricula;
     }
 
+    @XmlTransient
     public Collection<Calificacion> getCalificacionCollection() {
         return calificacionCollection;
     }
@@ -99,6 +101,7 @@ public class Periodomatriculacurso implements Serializable {
         this.idperiodo = idperiodo;
     }
 
+    @XmlTransient
     public Collection<Pago> getPagoCollection() {
         return pagoCollection;
     }

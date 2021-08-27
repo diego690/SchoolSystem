@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +21,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "parcial", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Parcial.findAll", query = "SELECT p FROM Parcial p"),
     @NamedQuery(name = "Parcial.findByIdparcial", query = "SELECT p FROM Parcial p WHERE p.idparcial = :idparcial"),
@@ -40,14 +42,11 @@ public class Parcial implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idparcial")
     private Integer idparcial;
     @Basic(optional = false)
-    @Column(name = "fechainicio")
     @Temporal(TemporalType.DATE)
     private Date fechainicio;
     @Basic(optional = false)
-    @Column(name = "fechafin")
     @Temporal(TemporalType.DATE)
     private Date fechafin;
     @JoinColumn(name = "idquimestre", referencedColumnName = "idquimestre")
@@ -101,6 +100,7 @@ public class Parcial implements Serializable {
         this.idquimestre = idquimestre;
     }
 
+    @XmlTransient
     public Collection<Tareas> getTareasCollection() {
         return tareasCollection;
     }

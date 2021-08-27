@@ -34,12 +34,12 @@ public class ActividadServiceImpl implements ActividadService{
     }
 
     @Override
-    public Actividad buscaById(Long id) {
+    public Actividad buscaById(Integer id) {
         return actividadRepo.findById(id).orElse(null);
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(Integer id) {
          actividadRepo.deleteById(id);
     }
     

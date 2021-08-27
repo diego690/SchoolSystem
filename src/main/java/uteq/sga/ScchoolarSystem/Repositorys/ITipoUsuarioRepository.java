@@ -14,6 +14,6 @@ import uteq.sga.ScchoolarSystem.Entity.Tipousuario;
  * @author capur
  */
 @Repository
-public interface ITipoUsuarioRepository extends CrudRepository<Tipousuario, Long>{
+public interface ITipoUsuarioRepository extends CrudRepository<Tipousuario, Short>{
     
 }

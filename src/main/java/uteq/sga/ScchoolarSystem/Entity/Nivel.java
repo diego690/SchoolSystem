@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,13 +17,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "nivel", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Nivel.findAll", query = "SELECT n FROM Nivel n"),
     @NamedQuery(name = "Nivel.findByIdnivel", query = "SELECT n FROM Nivel n WHERE n.idnivel = :idnivel"),
@@ -35,10 +37,8 @@ public class Nivel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idnivel")
     private Integer idnivel;
     @Basic(optional = false)
-    @Column(name = "grado")
     private String grado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idnivel")
     private Collection<Curso> cursoCollection;
@@ -71,6 +71,7 @@ public class Nivel implements Serializable {
         this.grado = grado;
     }
 
+    @XmlTransient
     public Collection<Curso> getCursoCollection() {
         return cursoCollection;
     }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import uteq.sga.ScchoolarSystem.Entity.Actividad;
@@ -75,6 +76,75 @@ public class ActividadController {
     public String guardaUsuario(@ModelAttribute Usuario user){
         userServ.guardar(user);
         System.out.println("usuario guardado con exito");
-        return "redirect:/Admin/Usuarios";
+        return "redirect:/Admin/listusuarios";
+    }
+     @GetMapping("/editUsuario/{id}")
+    public String EditarUser(@PathVariable("id") Integer iduser, Model model){
+    
+        Usuario tuser = userServ.buscaById(iduser);
+        
+        List<Tipousuario> listipoUser = tipouser.listarTodos();
+        
+        model.addAttribute("Titulo", "Editar Tipo de Usuario");
+        model.addAttribute("tipouser", listipoUser);
+        model.addAttribute("usuario", tuser);
+       
+        
+        return "/Admin/AddUsuario";
+    }
+     @GetMapping("/deleteUsuario/{id}")
+    public String deleteUser(@PathVariable("id") Short idtipou, Model model){
+    tipouser.eliminar(idtipou);
+       return "redirect:/Admin/listusuarios";
+    }
+    
+    
+    
+    
+    
+    
+    
+    @GetMapping("/listatipousuario")
+    public String listatipousuario(Model model){
+        List<Tipousuario> tpus= tipouser.listarTodos();
+        model.addAttribute("tusuarios", "Lista de Tipos de Usuarios");
+        model.addAttribute("tipousuarios", tpus);
+        return "/Admin/tipousuariolistar";
+    }
+    
+     @GetMapping("/createTipoUsuario")
+    public String crearTipoUser(Model model){
+        Tipousuario tuser = new Tipousuario();
+     model.addAttribute("Titulo", "Nuevo Tipo de Usuario");
+        model.addAttribute("tusuario", tuser);
+     return "/Admin/addtipoUser";
+    }
+    
+    @PostMapping("/addtipousuario")
+    public String addtipouser(@ModelAttribute Tipousuario tpuser){
+        tipouser.guardar(tpuser);
+        System.out.println("Guardado Exitosamente");
+        return "redirect:/Admin/listatipousuario";
+    }
+    
+     @GetMapping("/editTipoUsuario/{id}")
+    public String EditarTipoUser(@PathVariable("id") Short idtipou, Model model){
+    
+        Tipousuario tuser = tipouser.buscaById(idtipou);
+        
+        List<Tipousuario> listipoUser = tipouser.listarTodos();
+        
+        model.addAttribute("Titulo", "Editar Tipo de Usuario");
+        model.addAttribute("listatipo", listipoUser);
+        model.addAttribute("tusuario", tuser);
+       
+        
+        return "/Admin/addtipoUser";
+    }
+    
+     @GetMapping("/deleteTipoUsuario/{id}")
+    public String deleteTipoUser(@PathVariable("id") Short idtipou, Model model){
+    tipouser.eliminar(idtipou);
+       return "redirect:/Admin/listatipousuario";
     }
 }

@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,13 +19,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "profesor", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Profesor.findAll", query = "SELECT p FROM Profesor p"),
     @NamedQuery(name = "Profesor.findByIdprofesor", query = "SELECT p FROM Profesor p WHERE p.idprofesor = :idprofesor")})
@@ -36,7 +38,6 @@ public class Profesor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idprofesor")
     private Integer idprofesor;
     @OneToMany(mappedBy = "idprofesor")
     private Collection<Titulos> titulosCollection;
@@ -68,6 +69,7 @@ public class Profesor implements Serializable {
         this.idprofesor = idprofesor;
     }
 
+    @XmlTransient
     public Collection<Titulos> getTitulosCollection() {
         return titulosCollection;
     }
@@ -76,6 +78,7 @@ public class Profesor implements Serializable {
         this.titulosCollection = titulosCollection;
     }
 
+    @XmlTransient
     public Collection<Foroprofesor> getForoprofesorCollection() {
         return foroprofesorCollection;
     }
@@ -100,6 +103,7 @@ public class Profesor implements Serializable {
         this.idusuario = idusuario;
     }
 
+    @XmlTransient
     public Collection<Chatprofesor> getChatprofesorCollection() {
         return chatprofesorCollection;
     }
@@ -108,6 +112,7 @@ public class Profesor implements Serializable {
         this.chatprofesorCollection = chatprofesorCollection;
     }
 
+    @XmlTransient
     public Collection<Curso> getCursoCollection() {
         return cursoCollection;
     }

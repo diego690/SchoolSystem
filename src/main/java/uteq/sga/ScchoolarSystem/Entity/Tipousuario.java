@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,13 +17,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "tipousuario", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Tipousuario.findAll", query = "SELECT t FROM Tipousuario t"),
     @NamedQuery(name = "Tipousuario.findByIdtipousu", query = "SELECT t FROM Tipousuario t WHERE t.idtipousu = :idtipousu"),
@@ -36,13 +38,10 @@ public class Tipousuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idtipousu")
     private Short idtipousu;
     @Basic(optional = false)
-    @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
-    @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtipousu")
     private Collection<Usuario> usuarioCollection;
@@ -84,6 +83,7 @@ public class Tipousuario implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
     }

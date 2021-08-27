@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,13 +19,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "materiacurso", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Materiacurso.findAll", query = "SELECT m FROM Materiacurso m"),
     @NamedQuery(name = "Materiacurso.findByIdmateriacurso", query = "SELECT m FROM Materiacurso m WHERE m.idmateriacurso = :idmateriacurso"),
@@ -38,11 +40,8 @@ public class Materiacurso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idmateriacurso")
     private Integer idmateriacurso;
-    @Column(name = "nombre")
     private String nombre;
-    @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmateriacurso")
     private Collection<Actividad> actividadCollection;
@@ -90,6 +89,7 @@ public class Materiacurso implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Collection<Actividad> getActividadCollection() {
         return actividadCollection;
     }
@@ -98,6 +98,7 @@ public class Materiacurso implements Serializable {
         this.actividadCollection = actividadCollection;
     }
 
+    @XmlTransient
     public Collection<Asistencia> getAsistenciaCollection() {
         return asistenciaCollection;
     }
@@ -122,6 +123,7 @@ public class Materiacurso implements Serializable {
         this.idmateria = idmateria;
     }
 
+    @XmlTransient
     public Collection<Horasclase> getHorasclaseCollection() {
         return horasclaseCollection;
     }
@@ -130,6 +132,7 @@ public class Materiacurso implements Serializable {
         this.horasclaseCollection = horasclaseCollection;
     }
 
+    @XmlTransient
     public Collection<Recursos> getRecursosCollection() {
         return recursosCollection;
     }

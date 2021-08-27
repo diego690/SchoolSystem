@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,13 +19,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "tareas", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Tareas.findAll", query = "SELECT t FROM Tareas t"),
     @NamedQuery(name = "Tareas.findByIdtareas", query = "SELECT t FROM Tareas t WHERE t.idtareas = :idtareas"),
@@ -39,14 +41,10 @@ public class Tareas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idtareas")
     private Integer idtareas;
     @Basic(optional = false)
-    @Column(name = "requiereenvio")
     private boolean requiereenvio;
-    @Column(name = "estado")
     private String estado;
-    @Column(name = "recurso")
     private String recurso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtareas")
     private Collection<Calificacion> calificacionCollection;
@@ -103,6 +101,7 @@ public class Tareas implements Serializable {
         this.recurso = recurso;
     }
 
+    @XmlTransient
     public Collection<Calificacion> getCalificacionCollection() {
         return calificacionCollection;
     }
@@ -111,6 +110,7 @@ public class Tareas implements Serializable {
         this.calificacionCollection = calificacionCollection;
     }
 
+    @XmlTransient
     public Collection<Tiponotas> getTiponotasCollection() {
         return tiponotasCollection;
     }

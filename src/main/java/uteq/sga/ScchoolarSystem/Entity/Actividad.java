@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,42 +22,42 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "actividad", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a"),
     @NamedQuery(name = "Actividad.findByIdactividad", query = "SELECT a FROM Actividad a WHERE a.idactividad = :idactividad"),
     @NamedQuery(name = "Actividad.findByTitulo", query = "SELECT a FROM Actividad a WHERE a.titulo = :titulo"),
     @NamedQuery(name = "Actividad.findByDescripcion", query = "SELECT a FROM Actividad a WHERE a.descripcion = :descripcion"),
     @NamedQuery(name = "Actividad.findByFechinicio", query = "SELECT a FROM Actividad a WHERE a.fechinicio = :fechinicio"),
-    @NamedQuery(name = "Actividad.findByFechafin", query = "SELECT a FROM Actividad a WHERE a.fechafin = :fechafin")})
+    @NamedQuery(name = "Actividad.findByFechafin", query = "SELECT a FROM Actividad a WHERE a.fechafin = :fechafin"),
+    @NamedQuery(name = "Actividad.findByFechainicio", query = "SELECT a FROM Actividad a WHERE a.fechainicio = :fechainicio")})
 public class Actividad implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idactividad")
     private Integer idactividad;
     @Basic(optional = false)
-    @Column(name = "titulo")
     private String titulo;
     @Basic(optional = false)
-    @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
-    @Column(name = "fechinicio")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechinicio;
     @Basic(optional = false)
-    @Column(name = "fechafin")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechafin;
+    private String fechainicio;
     @JoinColumn(name = "idmateriacurso", referencedColumnName = "idmateriacurso")
     @ManyToOne(optional = false)
     private Materiacurso idmateriacurso;
@@ -122,6 +121,14 @@ public class Actividad implements Serializable {
         this.fechafin = fechafin;
     }
 
+    public String getFechainicio() {
+        return fechainicio;
+    }
+
+    public void setFechainicio(String fechainicio) {
+        this.fechainicio = fechainicio;
+    }
+
     public Materiacurso getIdmateriacurso() {
         return idmateriacurso;
     }
@@ -130,6 +137,7 @@ public class Actividad implements Serializable {
         this.idmateriacurso = idmateriacurso;
     }
 
+    @XmlTransient
     public Collection<Tareas> getTareasCollection() {
         return tareasCollection;
     }
@@ -138,6 +146,7 @@ public class Actividad implements Serializable {
         this.tareasCollection = tareasCollection;
     }
 
+    @XmlTransient
     public Collection<Foro> getForoCollection() {
         return foroCollection;
     }

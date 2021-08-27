@@ -8,7 +8,6 @@ package uteq.sga.ScchoolarSystem.Entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +18,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "usuario", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
     @NamedQuery(name = "Usuario.findByIdusuario", query = "SELECT u FROM Usuario u WHERE u.idusuario = :idusuario"),
@@ -37,13 +39,10 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idusuario")
     private Integer idusuario;
     @Basic(optional = false)
-    @Column(name = "cuenta")
     private String cuenta;
     @Basic(optional = false)
-    @Column(name = "contrasena")
     private String contrasena;
     @OneToMany(mappedBy = "idusuario")
     private Collection<Estudiante> estudianteCollection;
@@ -94,6 +93,7 @@ public class Usuario implements Serializable {
         this.contrasena = contrasena;
     }
 
+    @XmlTransient
     public Collection<Estudiante> getEstudianteCollection() {
         return estudianteCollection;
     }
@@ -102,6 +102,7 @@ public class Usuario implements Serializable {
         this.estudianteCollection = estudianteCollection;
     }
 
+    @XmlTransient
     public Collection<Administrador> getAdministradorCollection() {
         return administradorCollection;
     }
@@ -110,6 +111,7 @@ public class Usuario implements Serializable {
         this.administradorCollection = administradorCollection;
     }
 
+    @XmlTransient
     public Collection<Profesor> getProfesorCollection() {
         return profesorCollection;
     }
@@ -118,6 +120,7 @@ public class Usuario implements Serializable {
         this.profesorCollection = profesorCollection;
     }
 
+    @XmlTransient
     public Collection<Representante> getRepresentanteCollection() {
         return representanteCollection;
     }

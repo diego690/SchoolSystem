@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,13 +17,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "matricula", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Matricula.findAll", query = "SELECT m FROM Matricula m"),
     @NamedQuery(name = "Matricula.findByIdmatricula", query = "SELECT m FROM Matricula m WHERE m.idmatricula = :idmatricula"),
@@ -37,14 +39,10 @@ public class Matricula implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idmatricula")
     private Integer idmatricula;
     @Basic(optional = false)
-    @Column(name = "numero")
     private String numero;
-    @Column(name = "evidencia")
     private String evidencia;
-    @Column(name = "estado")
     private Boolean estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmatricula")
     private Collection<Estudiante> estudianteCollection;
@@ -95,6 +93,7 @@ public class Matricula implements Serializable {
         this.estado = estado;
     }
 
+    @XmlTransient
     public Collection<Estudiante> getEstudianteCollection() {
         return estudianteCollection;
     }
@@ -103,6 +102,7 @@ public class Matricula implements Serializable {
         this.estudianteCollection = estudianteCollection;
     }
 
+    @XmlTransient
     public Collection<Periodomatriculacurso> getPeriodomatriculacursoCollection() {
         return periodomatriculacursoCollection;
     }

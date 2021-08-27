@@ -15,6 +15,6 @@ import uteq.sga.ScchoolarSystem.Entity.Actividad;
 public interface ActividadService {
     public List<Actividad> listarTodos();
     public void guardar(Actividad actividad);
-    public Actividad buscaById(Long id);
-    public void eliminar(Long id);
+    public Actividad buscaById(Integer id);
+    public void eliminar(Integer id);
 }

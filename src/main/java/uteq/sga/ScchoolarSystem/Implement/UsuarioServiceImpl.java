@@ -33,13 +33,13 @@ public class UsuarioServiceImpl implements IUsuarioService{
     }
 
     @Override
-    public Usuario buscaById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Usuario buscaById(Integer id) {
+        return userepo.findById(id).orElse(null);
     }
 
     @Override
-    public void eliminar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void eliminar(Integer id) {
+        userepo.deleteById(id);
     }
     
 }

@@ -7,7 +7,6 @@ package uteq.sga.ScchoolarSystem.Entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,13 +16,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "tiponotas", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Tiponotas.findAll", query = "SELECT t FROM Tiponotas t"),
     @NamedQuery(name = "Tiponotas.findByIdnotas", query = "SELECT t FROM Tiponotas t WHERE t.idnotas = :idnotas"),
@@ -35,12 +36,9 @@ public class Tiponotas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idnotas")
     private Integer idnotas;
     @Basic(optional = false)
-    @Column(name = "nombre")
     private String nombre;
-    @Column(name = "descripcion")
     private String descripcion;
     @JoinColumn(name = "idtareas", referencedColumnName = "idtareas")
     @ManyToOne(optional = false)

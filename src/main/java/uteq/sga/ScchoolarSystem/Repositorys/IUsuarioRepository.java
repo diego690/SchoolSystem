@@ -14,6 +14,6 @@ import uteq.sga.ScchoolarSystem.Entity.Usuario;
  * @author capur
  */
 @Repository
-public interface IUsuarioRepository extends CrudRepository<Usuario, Long>{
+public interface IUsuarioRepository extends CrudRepository<Usuario, Integer>{
     
 }

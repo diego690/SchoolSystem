@@ -8,7 +8,6 @@ package uteq.sga.ScchoolarSystem.Entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,13 +19,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "chatrepresentante", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Chatrepresentante.findAll", query = "SELECT c FROM Chatrepresentante c"),
     @NamedQuery(name = "Chatrepresentante.findByIdchatrepresentante", query = "SELECT c FROM Chatrepresentante c WHERE c.idchatrepresentante = :idchatrepresentante"),
@@ -38,13 +39,10 @@ public class Chatrepresentante implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idchatrepresentante")
     private Integer idchatrepresentante;
     @Basic(optional = false)
-    @Column(name = "mensaje")
     private String mensaje;
     @Basic(optional = false)
-    @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     @JoinColumn(name = "idchat", referencedColumnName = "idchat")

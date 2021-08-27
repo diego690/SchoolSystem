@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,13 +17,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author capur
  */
 @Entity
-@Table(name = "tiporecurso", catalog = "GA", schema = "public")
+@Table(catalog = "GA", schema = "public")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Tiporecurso.findAll", query = "SELECT t FROM Tiporecurso t"),
     @NamedQuery(name = "Tiporecurso.findByIdtiporecurso", query = "SELECT t FROM Tiporecurso t WHERE t.idtiporecurso = :idtiporecurso"),
@@ -36,13 +38,10 @@ public class Tiporecurso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idtiporecurso")
     private Integer idtiporecurso;
     @Basic(optional = false)
-    @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
-    @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtiporecurso")
     private Collection<Recursos> recursosCollection;
@@ -84,6 +83,7 @@ public class Tiporecurso implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Collection<Recursos> getRecursosCollection() {
         return recursosCollection;
     }

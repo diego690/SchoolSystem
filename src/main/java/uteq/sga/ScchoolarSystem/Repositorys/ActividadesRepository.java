@@ -14,6 +14,6 @@ import uteq.sga.ScchoolarSystem.Entity.Actividad;
  * @author capur
  */
 @Repository
-public interface ActividadesRepository extends CrudRepository<Actividad, Long>{
+public interface ActividadesRepository extends CrudRepository<Actividad, Integer>{
     
 }

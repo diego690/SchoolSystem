@@ -15,6 +15,6 @@ import uteq.sga.ScchoolarSystem.Entity.Tipousuario;
 public interface ITipoUsuarioService {
     public List<Tipousuario> listarTodos();
     public void guardar(Tipousuario user);
-    public Tipousuario buscaById(Long id);
-    public void eliminar(Long id);
+    public Tipousuario buscaById(Short id);
+    public void eliminar(Short id);
 }

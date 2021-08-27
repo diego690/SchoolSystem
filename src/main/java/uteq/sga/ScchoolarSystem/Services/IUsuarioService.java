@@ -15,6 +15,6 @@ import uteq.sga.ScchoolarSystem.Entity.Usuario;
 public interface IUsuarioService {
     public List<Usuario> listarTodos();
     public void guardar(Usuario user);
-    public Usuario buscaById(Long id);
-    public void eliminar(Long id);
+    public Usuario buscaById(Integer id);
+    public void eliminar(Integer id);
 }
