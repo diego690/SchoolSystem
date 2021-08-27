@@ -135,7 +135,7 @@
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <a th:href="@{/TipoNota/createTipoNota}" type="button" class="btn btn-sm btn-outline-secondary">New</a>
+            <a th:href="@{/Periodo/createPeriodo}" type="button" class="btn btn-sm btn-outline-secondary">New</a>
             <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -153,22 +153,22 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Identificador Tarea</th>
-              <th scope="col">Nombre Tarea</th>
-              <th scope="col">Descripcion Tarea</th>
+              <th scope="col">Fecha Inicio Periodo</th>
+              <th scope="col">Fecha Fin Periodo</th>
+              <th scope="col">Estado Periodo</th>
               <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
             <tr th:each="atv:${periodos}">
               <td scope="row" th:text="${atv.idperiodo}">cuenta</td>
-              <td scope="row" th:date="${atv.fechainicio}">cuenta</td>
-              <td scope="row" th:date="${atv.fechafin}">data</td>
+              <td scope="row" th:text="${atv.fechainicio}">cuenta</td>
+              <td scope="row" th:text="${atv.fechafin}">data</td>
               <td scope="row" th:text="${atv.estado}">data</td>
               
               <td>
-                  <a class="btn btn-outline-secondary" th:href="@{/TipoNota/editarTipoNota/}+${atv.idnotas}">Edit</a>
-                  <a class="btn btn-outline-secondary" th:href="@{/TipoRecurso/deleteTRecurso/}+${atv.idnotas}">Delete</a>
+                  <a class="btn btn-outline-secondary" th:href="@{/Periodo/editPeriodo/}+${atv.idperiodo}">Edit</a>
+                  <a class="btn btn-outline-secondary" th:href="@{/Periodo/deletePeriodo/}+${atv.idperiodo}">Delete</a>
               </td>
             </tr>
            
