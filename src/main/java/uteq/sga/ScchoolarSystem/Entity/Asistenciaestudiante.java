@@ -7,6 +7,7 @@ package uteq.sga.ScchoolarSystem.Entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author capur
  */
 @Entity
-@Table(catalog = "GA", schema = "public")
+@Table(name = "asistenciaestudiante", catalog = "GA", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Asistenciaestudiante.findAll", query = "SELECT a FROM Asistenciaestudiante a"),
@@ -33,11 +34,14 @@ public class Asistenciaestudiante implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
+    @Column(name = "id")
     private int id;
     @Id
     @Basic(optional = false)
+    @Column(name = "idestudiante")
     private Integer idestudiante;
     @Basic(optional = false)
+    @Column(name = "asistencia")
     private boolean asistencia;
     @JoinColumn(name = "idasistencia", referencedColumnName = "idasistencia")
     @ManyToOne(optional = false)

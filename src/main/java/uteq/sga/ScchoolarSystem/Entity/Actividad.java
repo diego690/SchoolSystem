@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author capur
  */
 @Entity
-@Table(catalog = "GA", schema = "public")
+@Table(name = "actividad", catalog = "GA", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a"),
@@ -46,17 +47,23 @@ public class Actividad implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "idactividad")
     private Integer idactividad;
     @Basic(optional = false)
+    @Column(name = "titulo")
     private String titulo;
     @Basic(optional = false)
+    @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
+    @Column(name = "fechinicio")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechinicio;
     @Basic(optional = false)
+    @Column(name = "fechafin")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechafin;
+    @Column(name = "fechainicio")
     private String fechainicio;
     @JoinColumn(name = "idmateriacurso", referencedColumnName = "idmateriacurso")
     @ManyToOne(optional = false)

@@ -8,6 +8,7 @@ package uteq.sga.ScchoolarSystem.Entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author capur
  */
 @Entity
-@Table(catalog = "GA", schema = "public")
+@Table(name = "recursos", catalog = "GA", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Recursos.findAll", query = "SELECT r FROM Recursos r"),
@@ -39,10 +40,13 @@ public class Recursos implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "idrecursos")
     private Integer idrecursos;
     @Basic(optional = false)
+    @Column(name = "dato")
     private String dato;
     @Basic(optional = false)
+    @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @JoinColumn(name = "idmateria", referencedColumnName = "idmateriacurso")

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author capur
  */
 @Entity
-@Table(catalog = "GA", schema = "public")
+@Table(name = "materiacurso", catalog = "GA", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Materiacurso.findAll", query = "SELECT m FROM Materiacurso m"),
@@ -40,8 +41,11 @@ public class Materiacurso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "idmateriacurso")
     private Integer idmateriacurso;
+    @Column(name = "nombre")
     private String nombre;
+    @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmateriacurso")
     private Collection<Actividad> actividadCollection;

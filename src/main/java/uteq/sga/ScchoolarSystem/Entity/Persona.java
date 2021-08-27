@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author capur
  */
 @Entity
-@Table(catalog = "GA", schema = "public")
+@Table(name = "persona", catalog = "GA", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p"),
@@ -50,23 +51,35 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "idpersona")
     private Integer idpersona;
     @Basic(optional = false)
+    @Column(name = "nombres")
     private String nombres;
     @Basic(optional = false)
+    @Column(name = "apellidos")
     private String apellidos;
     @Basic(optional = false)
+    @Column(name = "identificacion")
     private String identificacion;
     @Basic(optional = false)
+    @Column(name = "fechnacimineto")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechnacimineto;
     @Basic(optional = false)
+    @Column(name = "telefono")
     private String telefono;
+    @Column(name = "direccion")
     private String direccion;
+    @Column(name = "correo")
     private String correo;
+    @Column(name = "estado")
     private String estado;
+    @Column(name = "imagen")
     private String imagen;
+    @Column(name = "genero")
     private String genero;
+    @Column(name = "idusuario")
     private Integer idusuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpersona")
     private Collection<Estudiante> estudianteCollection;

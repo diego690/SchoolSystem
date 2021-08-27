@@ -8,6 +8,7 @@ package uteq.sga.ScchoolarSystem.Entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author capur
  */
 @Entity
-@Table(catalog = "GA", schema = "public")
+@Table(name = "usuario", catalog = "GA", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
@@ -39,10 +40,13 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "idusuario")
     private Integer idusuario;
     @Basic(optional = false)
+    @Column(name = "cuenta")
     private String cuenta;
     @Basic(optional = false)
+    @Column(name = "contrasena")
     private String contrasena;
     @OneToMany(mappedBy = "idusuario")
     private Collection<Estudiante> estudianteCollection;

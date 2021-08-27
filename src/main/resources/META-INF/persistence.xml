@@ -36,6 +36,7 @@
     <class>uteq.sga.ScchoolarSystem.Entity.Chatprofesor</class>
     <class>uteq.sga.ScchoolarSystem.Entity.Asistencia</class>
     <class>uteq.sga.ScchoolarSystem.Entity.Foroestudiante</class>
+    <class>uteq.sga.ScchoolarSystem.Entity.Vermaterias</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/GA"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

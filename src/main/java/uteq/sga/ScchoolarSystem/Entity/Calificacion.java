@@ -8,6 +8,7 @@ package uteq.sga.ScchoolarSystem.Entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author capur
  */
 @Entity
-@Table(catalog = "GA", schema = "public")
+@Table(name = "calificacion", catalog = "GA", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Calificacion.findAll", query = "SELECT c FROM Calificacion c"),
@@ -38,11 +39,15 @@ public class Calificacion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "idcalificacion")
     private Integer idcalificacion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "calificacion")
     private BigDecimal calificacion;
+    @Column(name = "observacion")
     private String observacion;
     @Basic(optional = false)
+    @Column(name = "Envio")
     private String envio;
     @JoinColumn(name = "idperiodomatricula", referencedColumnName = "idperiodomatricula")
     @ManyToOne(optional = false)
