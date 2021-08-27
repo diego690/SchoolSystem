@@ -34,7 +34,7 @@ public class MateriaController {
         model.addAttribute("Titulo", "Listado de Materias");
         model.addAttribute("Title", "Listado de Materias");
         model.addAttribute("materias", materia);
-        return "/Admi/Materialist";
+        return "/Admin/Materialist";
     }
     @GetMapping("/create")
     public String create(Model model){
@@ -42,7 +42,7 @@ public class MateriaController {
          model.addAttribute("Titulo", "Nueva Materia");
         model.addAttribute("Title", "Nueva Materia");
         model.addAttribute("materias", mater);
-        return "/Admi/MateriaAdd";
+        return "/Admin/MateriaAdd";
     }
     @PostMapping("/save")
     public String guardar(@ModelAttribute Materia user){
@@ -56,7 +56,7 @@ public class MateriaController {
         model.addAttribute("Titulo", "Nueva Materia");
         model.addAttribute("Title", "Nueva Materia");
         model.addAttribute("materias", mt);
-        return "/Admi/MateriaAdd";
+        return "/Admin/MateriaAdd";
     }
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Integer id,Model model){
