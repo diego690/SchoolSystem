@@ -20,7 +20,7 @@ import uteq.sga.ScchoolarSystem.Services.ITareasService;
 import uteq.sga.ScchoolarSystem.Services.ITipoNotaService;
 
 /**
- *
+ *@DateTimeFormat(pattern = "yyyy-MM-dd")
  * @author capur
  */
 @Controller
